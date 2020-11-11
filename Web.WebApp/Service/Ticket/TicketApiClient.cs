@@ -35,7 +35,7 @@ namespace Web.WebApp.Service.Ticket
 
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri("https://localhost:5001");
-            var response = await client.PostAsync("api/Ticket/Create", httpContent);
+            var response = await client.PostAsync("api/Ticket/Delete", httpContent);
 
             return await response.Content.ReadAsStringAsync();
         }
@@ -47,7 +47,7 @@ namespace Web.WebApp.Service.Ticket
 
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri("https://localhost:5001");
-            var response = await client.PostAsync("api/Ticket/Details", httpContent);
+            var response = await client.GetAsync("api/Ticket/"+id);
 
             return await response.Content.ReadAsStringAsync();
         }
@@ -59,7 +59,7 @@ namespace Web.WebApp.Service.Ticket
 
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri("https://localhost:5001");
-            var response = await client.PostAsync("api/Ticket/FindById", httpContent);
+            var response = await client.GetAsync("api/Ticket/FindById/"+id);
 
             return await response.Content.ReadAsStringAsync();
         }
