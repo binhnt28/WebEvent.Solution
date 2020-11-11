@@ -1,0 +1,33 @@
+﻿@model Web.Data.Entities.Ticket
+<form asp-action="Create" method="post">
+    <div class="cr_ticket">
+        <button>Vé</button>
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th>Tên</th>
+                    <th>Sản Phẩm</th>
+                    <th>Hết mở bán</th>
+                    <th>Giá</th>
+                    <th>Số chỗ ngồi Tối đa</th>
+                    <th>Số chỗ đã Giữ phần</th>
+                    <th>Đặt chỗ chưa xác nhận</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input asp-for="name" type="text"></td>
+                    <td><input asp-for="nguoidat" type="text"></td>
+                    <td><input asp-for="hetmoban" type="text"></td>
+                    <td><input asp-for="gia" type="text"></td>
+                    <td><input asp-for="toida" type="text"></td>
+                    <td><input asp-for="giuphan" type="text"></td>
+                    <td><input asp-for="chuaxacnhan" type="text"></td>
+                    <td>  <select asp-for="EventId" class="form-control" asp-items="ViewBag.EventId"></select></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <button type="submit"> Taoj</button>
+</form>

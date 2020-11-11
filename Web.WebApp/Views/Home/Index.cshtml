@@ -1,0 +1,30 @@
+﻿
+    <div class="container p-2">
+        <a href="">Sự kiện của chúng tôi</a>
+        <div class="event">
+            <div class="event_tab">
+                <a href="" class="continue btn btn-primary text-left">Sự kiện tiếp theo</a>
+                <a href="" class="continue btn text-left">Sự kiện đã qua</a>
+            </div>
+            @foreach (var events in ViewBag.ListEvent) {
+            <div class="event_content ml-3">
+
+                <div class="event_content-detail">
+                    <div class="event_title">
+                        <a href="">@events.sukien</a>
+                    </div>
+                    <div class="event_gr mt-2">Tổ chức bởi: @events.congty</div>
+                    <div class="event_time"> @events.ngaybatdau đến @events.ngayketthuc</div>
+                    <div class="event_location">
+                       @events.diadiem
+                    </div>
+                    <div class="event_type">
+                        @events.chuyenmuc
+                    </div>
+                </div>
+                
+            </div>
+            }
+        </div>
+
+    </div>
