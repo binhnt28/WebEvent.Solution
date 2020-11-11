@@ -1,5 +1,5 @@
-﻿@model Web.Data.Entities.Ticket
-<form asp-action="Create" method="post">
+﻿@model Web.Application.MTicket.TicketRequest
+<form asp-action="Update" method="post">
     <div class="cr_ticket">
         <button>Vé</button>
         <table class="table table-light">
@@ -23,7 +23,7 @@
                     <td><input asp-for="toida" type="text"></td>
                     <td><input asp-for="giuphan" type="text"></td>
                     <td><input asp-for="chuaxacnhan" type="text"></td>
-                  
+                   
                 </tr>
                 <tr>
                     <th>TÊn sự kiện</th>
@@ -33,5 +33,5 @@
 
         </table>
     </div>
-    <button type="submit"> Taoj</button>
+    <button type="submit"> Cập nhật</button>
 </form>
