@@ -33,15 +33,59 @@ namespace Web.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpClient();
+            // Add DI
             services.AddTransient<IEventApiClient, EventApiClient>();
             services.AddTransient<ITicketApiClient, TicketApiClient>();
+          
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
             services.AddControllersWithViews();
 
             services.AddDbContext<DataDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("RecruitmentDatabase")));
 
+            services.AddSession();
+
+            
+
+            services.AddMvc();
+
             services.AddTransient<DataDbContext>();
 
+            services.AddIdentity<AppUser, AppRole>(options =>
+            {
+                options.Password.RequiredLength = 3;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.SignIn.RequireConfirmedAccount = false;
+            })
+                .AddEntityFrameworkStores<DataDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
+            services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
+
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+            });
+
+            services.AddSession();
+
+            services.AddControllers(config =>
+            {
+                // using Microsoft.AspNetCore.Mvc.Authorization;
+                // using Microsoft.AspNetCore.Authorization;
+                var policy = new AuthorizationPolicyBuilder()
+                                 .RequireAuthenticatedUser()
+                                 .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,8 +107,8 @@ namespace Web.WebApp
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseSession();
 
-          
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

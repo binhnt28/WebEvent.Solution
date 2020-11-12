@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
@@ -13,6 +14,7 @@ namespace Web.WebApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("admin/ticket")]
+    [Authorize(Roles = "Admin,Staff")]
     public class TicketController : Controller
     {
         private readonly DataDbContext _context;

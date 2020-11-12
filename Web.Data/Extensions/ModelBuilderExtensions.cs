@@ -34,14 +34,14 @@ namespace Web.Data.Extensions
                 Id = adminId,
                 UserName = "abc@gmail.com",
                 NormalizedUserName = "ABC@GMAIL.COM",
-                Email = "quochieu@gmail.com",
-                NormalizedEmail = "QUOCHIEU@GMAIL.COM",
+                Email = "binhnt@gmail.com",
+                NormalizedEmail = "BINHNT@GMAIL.COM",
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "abc123"),
                 SecurityStamp = string.Empty,
-                LastName = "Hồ Quốc",
-                FirstName = "Hiếu",
-                FullName= "Hồ Quốc Hiếu",
+                LastName = "Nguyễn Thanh",
+                FirstName = "Bình",
+                FullName= "Nguyễn Thanh Bình",
                 Url = "client/assets/img/avt1.png"
             });
 
