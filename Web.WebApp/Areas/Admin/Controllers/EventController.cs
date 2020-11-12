@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +16,7 @@ namespace Web.WebApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("admin/event")]
-
+    [Authorize(Roles = "Admin,Staff")]
     public class EventController : Controller
     {
         private readonly DataDbContext _context;
