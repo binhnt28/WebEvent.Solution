@@ -12,3 +12,4 @@ Các chức năng cần làm:
     -quản lí role.
     -quản lí user
   7.Đặt vé(chưa)
+*** đã update 1 số chức năng siêu xịn - siêu khổng lồ
