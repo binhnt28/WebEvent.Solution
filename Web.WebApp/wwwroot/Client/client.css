@@ -1,0 +1,104 @@
+*{
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+.logo{
+    width: 50px;
+}
+.logo img{
+    width: 100%;
+}
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+}
+.menu{
+    margin-left: 10rem;
+}
+.menu ul{
+    display: flex;
+    margin: 0;
+}
+.menu ul li{
+    margin: 0 1rem;
+    list-style: none;
+}
+.menu ul li a{
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: black;
+}
+.menu ul li:hover a{
+
+  color: rgb(13, 125, 145);
+}
+.banner{
+    width: 100%;
+}
+.banner img{
+    width: 100%;
+    z-index: 1;
+}
+.user-extend{
+    width: 150px;
+    height: auto;
+    border: 1px black dotted;
+    background: rgb(231, 231, 231);
+    position: absolute;
+    z-index: 99;
+    /* margin-top: 2.7rem; */
+    /* display: hidden; */
+    visibility: hidden;
+}
+.user{
+    width: 170px;
+}
+.user i{
+    margin-left: 5px;
+}
+.user-extend a{
+    text-decoration: none;
+}
+.user-extend ul{
+    padding-left: 1rem;
+}
+.user-extend ul li{
+    list-style: none;
+}
+.user:hover .user-extend{
+   visibility: visible;
+}
+/* --css client-- */
+.event{
+    width: 100%;
+    display: flex;
+    margin-top: 2rem;
+    flex-wrap: nowrap;
+}
+.event_content{
+    width: 280px;
+    height: 250px;
+    /* background: gold; */
+    margin-bottom: 3rem;
+    margin-right: 0.3rem;
+}
+.event_left{
+    display: flex;
+    flex-wrap: wrap;
+}
+.event_tab{
+    display: flex;
+    width: 25%;
+    flex-direction: column;
+}
+.container-fluid{
+    padding: 0;
+}
+.event_title a{
+    font-size: 1.4rem;
+    font-weight: 700;
+}
