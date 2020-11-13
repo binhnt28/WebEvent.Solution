@@ -1,10 +1,14 @@
 # WebEvent.Solution
 WebAppEvent
 Các chức năng cần làm: 
-  1.CRUD Event
-  2.CRUD Ticket
-  3.Giao Diện Client-Hiển thị vé . 
-  4.Giao Diện Admin (90%)
-  5.Login 
+  1.CRUD Event(xong)
+  2.CRUD Ticket(xong)
+  3.Giao Diện Client-Hiển thị vé(xong nghiệp vụ). . 
+  4.Giao Diện Admin (xong nghiệp vụ).
+  5.Login (xong)
+    -login
+     -đăng kí
   6. Phân quyền (Areas)
-  7.Đặt vé
+    -quản lí role.
+    -quản lí user
+  7.Đặt vé(chưa)
