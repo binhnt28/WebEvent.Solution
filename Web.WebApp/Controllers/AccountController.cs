@@ -44,6 +44,9 @@ namespace Web.WebApp.Controllers
                     {
                         UserName = register.Email,
                         Email = register.Email,
+                        LastName =register.LastName,
+                        FirstName =register.FirstName,
+                        FullName =register.LastName+" "+register.FirstName
                     };
                     var result = await userManager.CreateAsync(user, register.Password);
                     if (result.Succeeded)
@@ -101,6 +104,14 @@ namespace Web.WebApp.Controllers
                 }
                 return View(model);
             }
+        [HttpGet]
+        [Route("detailsuser")]
+        public async Task<IActionResult> DetailsUser(Guid? id)
+        {
+            var user = await userManager.FindByIdAsync(id.ToString());
+            return View(user);
+        }
+        [Route("logout")]
             public async Task<IActionResult> Logout()
             {
                 await signInManager.SignOutAsync();
