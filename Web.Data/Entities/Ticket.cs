@@ -8,7 +8,7 @@ namespace Web.Data.Entities
     {
         public Guid id { get; set; }
         public string name { get; set; }
-        public AppUser nguoidat { get; set; }
+       
         public DateTime hetmoban { get; set; }
         public double gia { get; set; }
         public int toida { get; set; }
@@ -16,5 +16,6 @@ namespace Web.Data.Entities
         public int chuaxacnhan { get; set; }
         public Guid EventId { get; set; }
         public Event Event { get; set; }
+        public ICollection<Participants> Participants { get; set; }
     }
 }

@@ -36,27 +36,46 @@
                         <li><a href="/account/login">Account</a></li>
                     </ul>
                 </div>
-                <div class="user">
-                    <span>
-                        Nguyễn Thanh Bình
-                        <i class="fas fa-user"></i>
-                    </span>
-                    <div class="user-extend">
-                        <ul>
-                            <li><a href="">Setting</a></li>
-                            <li><a href="">Logout</a></li>
-                        </ul>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <div class="user">
+
+                        <span>
+                            @(user.FullName ?? user.UserName)
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <div class="user-extend">
+                            <ul>
+                                <li><a asp-controller="account" asp-action="DetailsUser" asp-route-id="@user.Id">Setting</a></li>
+                                <li><a href="/account/logout">Logout</a></li>
+                            </ul>
+                        </div>
+
                     </div>
-                </div>
+
+                }
+                else
+                {
+                    <div class="user">
+
+                        <span>
+                           User
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <div class="user-extend">
+                            <ul>
+                                <li><a href="/account/login">Login</a></li>
+                                
+                            </ul>
+                        </div>
+
+                    </div>
+                }
             </div>
 
         </div>
-        <div class="container-fluid">
-            <div class="banner">
-                <img src="~/Client/banner.jpg" alt="">
-            </div>
-        </div>
-        
+
+
             @RenderBody();
         
     </div>

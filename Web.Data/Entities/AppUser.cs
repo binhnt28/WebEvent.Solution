@@ -14,5 +14,6 @@ namespace Web.Data.Entities
         public bool? Gender { get; set; }
         public string Address { get; set; }
         public string Url { get; set; }
+        public ICollection<Participants> Participants { get; set; }
     }
 }
