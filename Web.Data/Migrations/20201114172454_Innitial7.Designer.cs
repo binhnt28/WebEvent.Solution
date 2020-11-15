@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web.Data.DataContext;
 
 namespace Web.Data.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    partial class DataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201114172454_Innitial7")]
+    partial class Innitial7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,7 +162,7 @@ namespace Web.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "4b76e89b-ca83-4719-b391-ded1b50dbf3b",
+                            ConcurrencyStamp = "a237f478-a709-4e71-858e-99096ec10b82",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -260,7 +262,7 @@ namespace Web.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "926c98aa-dd3e-440f-8d19-5fdaefde5f1e",
+                            ConcurrencyStamp = "3e98ab06-ea52-4ea2-ba24-ff6ff6c9c63c",
                             Email = "binhnt@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Bình",
@@ -269,7 +271,7 @@ namespace Web.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BINHNT@GMAIL.COM",
                             NormalizedUserName = "ABC@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENS4cg8kRWUGOWFjJXZNSaK2Ty1jC3ytfa+B9w8NJfM8Y5MePAUASoQBiPrNANOH3g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAeqALVngmRFhJRtKwqGybrFkFwCrdv82tRh1euyg+KCrzHyCG6f0xq4TyvzSciWbQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -361,9 +363,6 @@ namespace Web.Data.Migrations
 
                     b.Property<Guid>("TicketId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("TicketName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");

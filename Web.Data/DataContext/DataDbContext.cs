@@ -14,7 +14,9 @@ namespace Web.Data.DataContext
    public partial class DataDbContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
 
-
+        public DataDbContext()
+        {
+        }
         public DataDbContext(DbSet<Event> events, DbSet<Ticket> tickets)
         {
             Events = events;
@@ -56,6 +58,6 @@ namespace Web.Data.DataContext
         }
         public DbSet<Event> Events { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
-
+        public DbSet<Participants> Participants { get; set; }
     }
 }

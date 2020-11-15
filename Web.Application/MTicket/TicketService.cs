@@ -21,7 +21,6 @@ namespace Web.Application.MTicket
             var ticket = new Ticket()
             {
                 name = request.name,
-                nguoidat = request.nguoidat,
                 hetmoban = request.hetmoban,
                 gia = request.gia,
                 toida = request.toida,
@@ -60,7 +59,6 @@ namespace Web.Application.MTicket
             {
                 id = x.id,
                 name = x.name,
-                nguoidat = x.nguoidat,
                 hetmoban = x.hetmoban,
                 gia = x.gia,
                 toida = x.toida,
@@ -76,7 +74,6 @@ namespace Web.Application.MTicket
             {
                 id =request.id,
                 name = request.name,
-                nguoidat = request.nguoidat,
                 hetmoban = request.hetmoban,
                 gia = request.gia,
                 toida = request.toida,

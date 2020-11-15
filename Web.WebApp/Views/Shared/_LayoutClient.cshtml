@@ -25,38 +25,58 @@
         <div class="container-fluid" style="border: 1px black;">
             <div class="container header">
                 <div class="logo">
-                    <a href=""><img src="~/Client/logo.png" alt=""></a>
+                    <a asp-action="Index" asp-controller="Home"><img src="~/Client/logo.png" alt=""></a>
                 </div>
                 <div class="menu">
                     <ul>
-                        <li><a href="">Home</a></li>
+                        <li><a asp-action="Index" asp-controller="Home">Home</a></li>
                         <li><a href="">About</a></li>
                         <li><a href="">Blog</a></li>
                         <li><a href="">Contact</a></li>
+                        <li><a href="/admin">Admin</a></li>
                         <li><a href="/account/login">Account</a></li>
                     </ul>
                 </div>
-                <div class="user">
-                    <span>
-                        Nguyễn Thanh Bình
-                        <i class="fas fa-user"></i>
-                    </span>
-                    <div class="user-extend">
-                        <ul>
-                            <li><a href="">Setting</a></li>
-                            <li><a href="">Logout</a></li>
-                        </ul>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <div class="user">
+
+                        <span>
+                            @(user.FullName ?? user.UserName)
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <div class="user-extend">
+                            <ul>
+                                <li><a asp-controller="account" asp-action="DetailsUser" asp-route-id="@user.Id">Setting</a></li>
+                                <li><a href="/account/logout">Logout</a></li>
+                            </ul>
+                        </div>
+
                     </div>
-                </div>
+
+                }
+                else
+                {
+                    <div class="user">
+
+                        <span>
+                           User
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <div class="user-extend">
+                            <ul>
+                                <li><a href="/account/login">Login</a></li>
+                                
+                            </ul>
+                        </div>
+
+                    </div>
+                }
             </div>
 
         </div>
-        <div class="container-fluid">
-            <div class="banner">
-                <img src="~/Client/banner.jpg" alt="">
-            </div>
-        </div>
-        
+
+
             @RenderBody();
         
     </div>
