@@ -25,14 +25,15 @@
         <div class="container-fluid" style="border: 1px black;">
             <div class="container header">
                 <div class="logo">
-                    <a href=""><img src="~/Client/logo.png" alt=""></a>
+                    <a asp-action="Index" asp-controller="Home"><img src="~/Client/logo.png" alt=""></a>
                 </div>
                 <div class="menu">
                     <ul>
-                        <li><a href="">Home</a></li>
+                        <li><a asp-action="Index" asp-controller="Home">Home</a></li>
                         <li><a href="">About</a></li>
                         <li><a href="">Blog</a></li>
                         <li><a href="">Contact</a></li>
+                        <li><a href="/admin">Admin</a></li>
                         <li><a href="/account/login">Account</a></li>
                     </ul>
                 </div>

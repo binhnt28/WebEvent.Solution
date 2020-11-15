@@ -102,9 +102,9 @@ namespace Web.WebApp.Controllers
                         {
                             return RedirectToAction("index", "home");
                         }
-                    }
 
-                }
+                    }
+            }
                 return View(model);
             }
         [HttpGet]

@@ -112,8 +112,11 @@
 
 .event_tab {
     display: flex;
-    width: 240px;
+    width: 240px!important;
     flex-direction: column;
+}
+.event_tab button {
+    width: 240px !important;
 }
 
 .container-fluid {
@@ -208,3 +211,15 @@
         text-align: center;
         display: flex;
     }
+.hid {
+    display: none!important;
+}
+.tieptheo1 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.daqua1 {
+    display: flex;
+    flex-wrap: wrap;
+}

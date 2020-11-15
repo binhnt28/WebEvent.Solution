@@ -30,7 +30,9 @@ namespace Web.WebApp.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            ViewBag.ListEvent = _context.Events.ToList();
+            var a = DateTime.Today;
+            ViewBag.ListEvent = _context.Events.Where(x => x.ngayketthuc >= a).ToList();
+            ViewBag.ListEvent2 = _context.Events.Where(x => x.ngayketthuc<= a ).ToList();
             return View();
         }
         [HttpGet]

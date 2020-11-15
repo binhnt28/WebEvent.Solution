@@ -37,14 +37,7 @@ namespace Web.WebApp.Controllers
             ViewBag.ListTicket = _context.Tickets.Where(x => x.EventId ==id).ToList();
             return View();
         }
-        //[HttpGet]
-        //public async Task<IActionResult> DatVe(Guid eventId ,Guid userId)
-        //{
-        //    var user = await userManager.FindByIdAsync(userId.ToString());
-        //    var event = await ticketApiClient.FindById(ticketId);
-
-        //    return View(model);
-        //}
+      
 
         [HttpPost]
         public async Task<IActionResult> EditUser(UserViewModel model)
