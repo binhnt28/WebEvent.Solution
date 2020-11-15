@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web.Data.DataContext;
 
 namespace Web.Data.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    partial class DataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201114102917_Innitial5")]
+    partial class Innitial5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,7 +162,7 @@ namespace Web.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "4b76e89b-ca83-4719-b391-ded1b50dbf3b",
+                            ConcurrencyStamp = "4bbdb00d-9e08-409a-919a-a4e308a4f4a4",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -233,6 +235,9 @@ namespace Web.Data.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("TicketId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -253,6 +258,8 @@ namespace Web.Data.Migrations
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
+                    b.HasIndex("TicketId");
+
                     b.ToTable("AppUsers");
 
                     b.HasData(
@@ -260,7 +267,7 @@ namespace Web.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "926c98aa-dd3e-440f-8d19-5fdaefde5f1e",
+                            ConcurrencyStamp = "191567ee-c70e-4e73-a99f-e3a3d1cd2ac4",
                             Email = "binhnt@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Bình",
@@ -269,7 +276,7 @@ namespace Web.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BINHNT@GMAIL.COM",
                             NormalizedUserName = "ABC@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENS4cg8kRWUGOWFjJXZNSaK2Ty1jC3ytfa+B9w8NJfM8Y5MePAUASoQBiPrNANOH3g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDFIORJ5WZgd1Q0U58fvjFU4eQZ8z29wiWtxzmOlPXpXkLVaXfGodilmhUox/Ql6Kg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -342,39 +349,6 @@ namespace Web.Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("Web.Data.Entities.Participants", b =>
-                {
-                    b.Property<Guid>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("TicketId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("TicketName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("TicketId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Participants");
                 });
 
             modelBuilder.Entity("Web.Data.Entities.Ticket", b =>
@@ -462,19 +436,12 @@ namespace Web.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Web.Data.Entities.Participants", b =>
+            modelBuilder.Entity("Web.Data.Entities.AppUser", b =>
                 {
                     b.HasOne("Web.Data.Entities.Ticket", "Ticket")
-                        .WithMany("Participants")
+                        .WithMany()
                         .HasForeignKey("TicketId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Web.Data.Entities.AppUser", "User")
-                        .WithMany("Participants")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Web.Data.Entities.Ticket", b =>

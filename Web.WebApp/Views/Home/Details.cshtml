@@ -1,107 +1,51 @@
 ﻿@model Web.Application.MEvent.EventResponse
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="d-flex align-items-center">
-                    <h4 class="card-title">Chi tiết</h4>
-                </div>
+    <div class="container-fluid ticket">
+        <h2 class="text-center">Chi tiết sự kiện</h2>
+        <div class="container detail_event">
+            <div class="event-left">
+                <span class="text_title">Sự kiện</span>
+                <span class="text_title">Nhà tổ chức</span>
+                <span class="text_title">Chương trình</span>
+                <span class="text_title">Địa điểm</span>
+                <span class="text_title">Công ty</span>
+                <span class="text_title">Người phụ trách</span>
+                <span class="text_title">Thời gian</span>
+                <span class="text_title">Số người tham gia</span>
             </div>
-            <div class="card-body">
-                <dl class="row">
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.sukien)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.sukien)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.website)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.website)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.nhatochuc)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.nhatochuc)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.eventprogram)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.eventprogram)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.diadiem)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.diadiem)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.congty)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.congty)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.nguoiphutrach)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.nguoiphutrach)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.ngaybatdau)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.ngaybatdau)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.ngayketthuc)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.ngayketthuc)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.muigio)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.muigio)
-                    </dd>
-
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.chuyenmuc)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.chuyenmuc)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.twitterhashtag)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.twitterhashtag)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.nguoitoida)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.nguoitoida)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.nguoitoithieu)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.nguoitoithieu)
-                    </dd>
-
-                </dl>
-            </div>
-            <div>
+            <div class="event-content">
+                <span class="text_title">@Model.sukien</span>
+                <span class="text_title">@Model.nhatochuc</span>
+                <span class="text_title">@Model.chuyenmuc</span>
+                <span class="text_title">@Model.diadiem</span>
+                <span class="text_title">@Model.congty</span>
+                <span class="text_title">@Model.nguoiphutrach</span>
+                <span class="text_title">@Model.ngaybatdau Đến @Model.ngayketthuc</span>
+                <span class="text_title">@Model.nguoitoida Người</span>
             </div>
         </div>
+        <div class="container list_ticket">
+
+            <div class="ticket_list">
+                <span class="ticket_title">Tên vé</span>
+                <span class="ticket_title">Thời hạn bán</span>
+                <span class="ticket_title">Giá</span>
+                <span class="ticket_title">Sự kiện</span>
+                <span class="ticket_title">Action</span>
+
+            </div>
+            @foreach (var ticket in ViewBag.Listticket)
+            {
+                <div class="ticket_content">
+                    <span class="ticket_title-f">@ticket.name</span>
+                    <span class="ticket_title-f">@ticket.hetmoban</span>
+                    <span class="ticket_title-f">@ticket.gia</span>
+                    <span class="ticket_title-f">@Model.sukien</span>
+                    <span class="ticket_title-f">
+                    <a asp-route-ticketId="@ticket.id" asp-action="DatVe" asp-controller="Home" class=" btn btn-outline-danger">Đặt vé</a>
+                    </span>
+
+                </div>
+            }
+
+        </div>
     </div>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a>
-</div>

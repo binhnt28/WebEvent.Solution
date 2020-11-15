@@ -6,19 +6,22 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Web.Data.DataContext;
 using Web.Data.Entities;
 using Web.Data.Model;
 
 namespace Web.WebApp.Controllers
 {
-  
+    
         [Route("account")]
         public class AccountController : Controller
         {
             private readonly UserManager<AppUser> userManager;
+        private readonly DataDbContext dataDbContext;
             private readonly SignInManager<AppUser> signInManager;
-            public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+            public AccountController(UserManager<AppUser> userManager,DataDbContext dataDbContext, SignInManager<AppUser> signInManager)
             {
+            this.dataDbContext = dataDbContext;
                 this.userManager = userManager;
                 this.signInManager = signInManager;
             }
@@ -105,12 +108,59 @@ namespace Web.WebApp.Controllers
                 return View(model);
             }
         [HttpGet]
-        [Route("detailsuser")]
+        [Route("detailsuser/{id}")]
         public async Task<IActionResult> DetailsUser(Guid? id)
         {
+            var ticket = dataDbContext.Participants.Where(x => x.UserId == id).ToList();
+
+            ViewBag.ticket =ticket;
             var user = await userManager.FindByIdAsync(id.ToString());
             return View(user);
         }
+        [HttpGet]
+        [Route ("edit/{id}")]
+        public async Task<IActionResult> Update(Guid? id)
+        {
+            var user = await userManager.FindByIdAsync(id.ToString());
+            var model = new UserViewModel()
+            {
+                Id =user.Id,
+                FirstName =user.FirstName,
+                LastName =user.LastName,
+                Email =user.Email,
+                DateOfBirth =user.DateOfBirth,
+                Gender =user.Gender,
+                PhoneNumber =user.PhoneNumber,
+                Address =user.Address,
+                
+            };
+            return View(model);
+
+        }
+        [HttpPost]
+        [Route("edit/{id}")]
+        public async Task<IActionResult> Update(UserViewModel app)
+        {
+            var user = await userManager.FindByIdAsync(app.Id.ToString());
+            if (ModelState.IsValid)
+            {
+                user.FirstName = app.FirstName;
+                user.UserName = app.Email;
+                user.LastName = app.LastName;
+                user.FullName = app.LastName + " " + app.FirstName;
+                user.DateOfBirth = app.DateOfBirth;
+               user.Gender = app.Gender;
+               user.PhoneNumber = app.PhoneNumber;
+               user.Address = app.Address;
+                var result = await userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return Redirect("/account/detailsuser/" + app.Id);
+                }
+            }
+            return View(app);
+        }
+
         [Route("logout")]
             public async Task<IActionResult> Logout()
             {
