@@ -65,7 +65,7 @@ namespace Web.WebApp.Controllers
                 _context.Participants.Add(participants);
                 await _context.SaveChangesAsync();
             }
-            return View();
+            return Redirect("/");
         }
 
 

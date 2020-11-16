@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Web.Data.DataContext;
 using Web.Data.Entities;
 using Web.Data.Model;
@@ -16,7 +17,8 @@ namespace Web.WebApp.Controllers
         [Route("account")]
         public class AccountController : Controller
         {
-            private readonly UserManager<AppUser> userManager;
+        bool t;
+        private readonly UserManager<AppUser> userManager;
         private readonly DataDbContext dataDbContext;
             private readonly SignInManager<AppUser> signInManager;
             public AccountController(UserManager<AppUser> userManager,DataDbContext dataDbContext, SignInManager<AppUser> signInManager)
@@ -70,6 +72,7 @@ namespace Web.WebApp.Controllers
             [AllowAnonymous]
             public async Task<IActionResult> Login(string returnUrl)
             {
+
                 LoginViewModel model = new LoginViewModel
                 {
                     ReturnUrl = returnUrl,
@@ -85,15 +88,39 @@ namespace Web.WebApp.Controllers
             [Route("login")]
             public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
             {
+           
+            ViewBag.Test = dataDbContext.Users.ToList();
+           
+                foreach(var item in ViewBag.Test)
+            {
+                if (item.UserName== model.Email)
+                {
+                    if (item.Lock == true)
+                    {
+                         t = true;
+                        break;
+                    }
+                    else
+                    {
+                        t = false;
+                        break;
+                    }
+                }
+            }
+                
+            
                 if (ModelState.IsValid)
                 {
+              
+                if (t != true) {
                     var result = await signInManager.PasswordSignInAsync(
-                        model.Email,
-                        model.Password,
-                        model.RememberMe,
+                           model.Email,
+                           model.Password,
+                           model.RememberMe,
                         false);
                     if (result.Succeeded)
                     {
+
                         if (!string.IsNullOrEmpty(returnUrl))
                         {
                             return Redirect(returnUrl);
@@ -104,7 +131,16 @@ namespace Web.WebApp.Controllers
                         }
 
                     }
+                    return RedirectToAction("login", "account");
+                }
+                else
+                {
+                    return View("Warning","account");
+                }
+               
             }
+                
+            
                 return View(model);
             }
         [HttpGet]
@@ -176,5 +212,12 @@ namespace Web.WebApp.Controllers
             {
                 return View();
             }
+        [HttpGet]
+        [Route("Warning")]
+        [AllowAnonymous]
+        public IActionResult Warning()
+        {
+            return View();
         }
+    }
 }

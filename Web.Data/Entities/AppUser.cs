@@ -15,7 +15,11 @@ namespace Web.Data.Entities
         public DateTimeOffset? DateOfBirth { get; set; }
         public bool? Gender { get; set; }
         public string Address { get; set; }
+        public bool lockoutOnFailure { get; set; }
+        public DateTimeOffset? LockoutEnd { get; set; }
+        public bool TwoFactorEnabled { get; set; }
         public string Url { get; set; }
         public ICollection<Participants> Participants { get; set; }
+        public bool Lock { get; set; }
     }
 }

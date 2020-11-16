@@ -59,5 +59,7 @@ namespace Web.Data.DataContext
         public DbSet<Event> Events { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Participants> Participants { get; set; }
+        public DbSet<AppUser> Users { get; set; }
+
     }
 }
