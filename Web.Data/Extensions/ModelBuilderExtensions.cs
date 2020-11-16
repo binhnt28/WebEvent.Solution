@@ -39,6 +39,7 @@ namespace Web.Data.Extensions
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "abc"),
                 SecurityStamp = string.Empty,
+                Lock=false,
                 LastName = "Nguyễn Thanh",
                 FirstName = "Bình",
                 FullName= "Nguyễn Thanh Bình",
