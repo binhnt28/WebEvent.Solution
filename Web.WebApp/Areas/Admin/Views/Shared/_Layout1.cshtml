@@ -107,9 +107,9 @@
          data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Quản lí phân quyền</h6>
-            <a class="collapse-item" href="/admin/role/list">danh sách role</a>
+            <a class="collapse-item" href="/admin/role/listrole">danh sách role</a>
           
-            <a class="collapse-item" href="/admin/role/create">Thêm quyền</a>
+            <a class="collapse-item" href="/admin/role/createrole">Thêm quyền</a>
             <a class="collapse-item" href="/admin/role/listuser">Danh sách User</a>
         </div>
     </div>
@@ -372,17 +372,13 @@
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                      aria-labelledby="userDropdown" id="usercollapseUt" aria-controls="usercollapseUt">
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/admin/account/detailsuser/@user.Id">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Profile
                                     </a>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/admin/account/edit/@user.Id">
                                         <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Settings
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Activity Log
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -399,7 +395,7 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    @RenderBody();
+                    @RenderBody()
                 </div>
                 <!-- End of Main Content -->
                 <!-- Footer -->

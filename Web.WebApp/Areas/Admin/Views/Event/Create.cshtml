@@ -2,33 +2,19 @@
     <div class="wrapper">
         <form method="post" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-
             <div class="event_panel">
                 <div class="er_pn-title"><a href="">Sự kiện</a>/Mới</div>
-                <div class="er_pn-action">
-                    <button class="btn btn-success">
-                        <i class="fas fa-plus"></i>
-                        Lưu
-                    </button>
-                    <button class="btn btn-outline-dark">
-                        <i class="fas fa-plus"></i>
-                        Hủy bỏ
-                    </button>
-                </div>
-
                 <div class="er_action-cr">
                     <button type="submit" class="btn btn-success">
                         <i class="fas fa-plus"></i>
                         Xác nhận sự kiện
                     </button>
-                    <button class="btn btn-outline-dark">
+                    <a asp-controller="Event" asp-action="Index" asp-area="Admin" class="btn btn-outline-dark">
                         <i class="fas fa-plus"></i>
                         Hủy bỏ sự kiện
-                    </button>
+                    </a>
                 </div>
             </div>
-
             <div class="event_create">
                 <div class="form_create">
                     <div class="cr_head">
@@ -42,7 +28,6 @@
                         </div>
                     </div>
                     <div class="cr_body">
-
                         <table>
                             <tbody>
                                 <tr>
@@ -51,7 +36,6 @@
                                         <input asp-for="website" type="text">
                                         <span asp-validation-for="website" class="text-danger"></span>
                                     </td>
-
                                 </tr>
                                 <tr>
                                     <td class="label"><label for="">Nhà tổ chức</label></td>
@@ -89,7 +73,6 @@
                                     </td>
                                 </tr>
                             </tbody>
-
                         </table>
                         <table>
                             <tbody>
@@ -109,7 +92,6 @@
                                 </tr>
 
                             </tbody>
-
                         </table>
                         <table>
                             <tbody>
@@ -126,7 +108,6 @@
                                         <input asp-for="ngayketthuc" class="cl-pur" type="date" id="nkt">
                                         <span asp-validation-for="ngayketthuc" class="text-danger"></span>
                                     </td>
-
                                 </tr>
                                 <tr>
                                     <td class="label"><label for="">Múi giờ</label></td>
@@ -135,9 +116,7 @@
                                         <span asp-validation-for="muigio" class="text-danger"></span>
                                     </td>
                                 </tr>
-
                             </tbody>
-
                         </table>
                         <table>
                             <tbody>
@@ -155,41 +134,9 @@
                                         <span asp-validation-for="nguoitoida" class="text-danger"></span>
                                     </td>
                                 </tr>
-
                             </tbody>
-
                         </table>
-
-                        <div class="cr_ticket">
-                            <button>Vé</button>
-                            <table class="table table-light">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th>Tên</th>
-                                        <th>Sản Phẩm</th>
-                                        <th>Hết mở bán</th>
-                                        <th>Giá</th>
-                                        <th>Số chỗ ngồi Tối đa</th>
-                                        <th>Số chỗ đã Giữ phần</th>
-                                        <th>Đặt chỗ chưa xác nhận</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="text"></td>
-                                        <td><input type="text"></td>
-                                        <td><input type="text"></td>
-                                        <td><input type="text"></td>
-                                        <td><input type="text"></td>
-                                        <td><input type="text"></td>
-                                        <td><input type="text"></td>
-                                    </tr>
-                                </tbody>
-
-                            </table>
-                        </div>
                     </div>
-
                 </div>
             </div>
         </form>

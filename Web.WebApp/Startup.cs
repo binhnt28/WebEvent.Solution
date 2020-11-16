@@ -73,7 +73,7 @@ namespace Web.WebApp
 
             services.AddSession(options => {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
-            });
+            }); 
 
             services.AddSession();
 
@@ -85,6 +85,15 @@ namespace Web.WebApp
                                  .RequireAuthenticatedUser()
                                  .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
+            });
+            services.Configure<IdentityOptions>(options =>
+            {
+            
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(99);
+                options.Lockout.MaxFailedAccessAttempts = 1;
+                options.Lockout.AllowedForNewUsers = true;
+
+             
             });
         }
 
