@@ -10,8 +10,8 @@ using Web.Data.DataContext;
 namespace Web.Data.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20201110170607_Innitial4")]
-    partial class Innitial4
+    [Migration("20201116115236_Innitial2")]
+    partial class Innitial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -162,8 +162,8 @@ namespace Web.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "abbadd63-865b-4ecd-a157-9da6fe86ec55",
-                            Description = "Administrator role",
+                            ConcurrencyStamp = "d82d5746-072f-439a-bd94-fc6d14052607",
+                            Description = "Administrator",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -245,6 +245,9 @@ namespace Web.Data.Migrations
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
+                    b.Property<bool>("lockoutOnFailure")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -262,21 +265,22 @@ namespace Web.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "48e922d5-4d50-4976-8e56-7279f835b37b",
-                            Email = "quochieu@gmail.com",
+                            ConcurrencyStamp = "e05b8609-e1d7-40b6-92f1-c59ab5f1f381",
+                            Email = "binhnt@gmail.com",
                             EmailConfirmed = true,
-                            FirstName = "Hiếu",
-                            FullName = "Hồ Quốc Hiếu",
-                            LastName = "Hồ Quốc",
+                            FirstName = "Bình",
+                            FullName = "Nguyễn Thanh Bình",
+                            LastName = "Nguyễn Thanh",
                             LockoutEnabled = false,
-                            NormalizedEmail = "QUOCHIEU@GMAIL.COM",
+                            NormalizedEmail = "BINHNT@GMAIL.COM",
                             NormalizedUserName = "ABC@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHZl3TaFyef7BANjZbCBMi+zRXBONqSc8K5uac1SS8yNv4oSZ4OiIDbFLEqgv768ew==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAm8ncOPTyJYRrPH/O3U6ciiUsZjez6yf1vL6m0eykqVDMd47I8KMLpYWZMvmKX/Fg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
                             Url = "client/assets/img/avt1.png",
-                            UserName = "abc@gmail.com"
+                            UserName = "abc@gmail.com",
+                            lockoutOnFailure = false
                         });
                 });
 
@@ -287,18 +291,23 @@ namespace Web.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("chuyenmuc")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("congty")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("diadiem")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("eventprogram")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("muigio")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ngaybatdau")
@@ -308,6 +317,7 @@ namespace Web.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("nguoiphutrach")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("nguoitoida")
@@ -317,15 +327,18 @@ namespace Web.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("nhatochuc")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("sukien")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("surveryduration")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("twitterhashtag")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("website")
@@ -335,6 +348,39 @@ namespace Web.Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("Web.Data.Entities.Participants", b =>
+                {
+                    b.Property<Guid>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("TicketId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("TicketName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("TicketId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Participants");
                 });
 
             modelBuilder.Entity("Web.Data.Entities.Ticket", b =>
@@ -359,10 +405,8 @@ namespace Web.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("nguoidatId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("toida")
                         .HasColumnType("int");
@@ -370,8 +414,6 @@ namespace Web.Data.Migrations
                     b.HasKey("id");
 
                     b.HasIndex("EventId");
-
-                    b.HasIndex("nguoidatId");
 
                     b.ToTable("Tickets");
                 });
@@ -427,6 +469,21 @@ namespace Web.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Web.Data.Entities.Participants", b =>
+                {
+                    b.HasOne("Web.Data.Entities.Ticket", "Ticket")
+                        .WithMany("Participants")
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Web.Data.Entities.AppUser", "User")
+                        .WithMany("Participants")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Web.Data.Entities.Ticket", b =>
                 {
                     b.HasOne("Web.Data.Entities.Event", "Event")
@@ -434,11 +491,6 @@ namespace Web.Data.Migrations
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("Web.Data.Entities.AppUser", "nguoidat")
-                        .WithMany()
-                        .HasForeignKey("nguoidatId")
-                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

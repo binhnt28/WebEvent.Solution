@@ -14,9 +14,10 @@
             <table>
                 <tr>
                     <td class="title">Last Name</td>
-                    <td class="content"><input type="text" asp-for="@Model.LastName" value="@Model.LastName">
-                                          <span asp-validation-for="LastName" class="text-danger"></span>       
-                                               </td>
+                    <td class="content">
+                        <input type="text" asp-for="@Model.LastName" value="@Model.LastName">
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </td>
                 </tr>
                 <tr>
                     <td class="title">First Name</td>
@@ -47,23 +48,23 @@
                 <tr>
                     <td class="title">Địa chỉ</td>
                     <td class="content">
-                     <input type="text" asp-for="@Model.Address" value="@Model.Address">
-                     <span asp-validation-for="Address" class="text-danger"></span>
+                        <input type="text" asp-for="@Model.Address" value="@Model.Address">
+                        <span asp-validation-for="Address" class="text-danger"></span>
                     </td>
                 </tr>
                 <tr>
                     <td class="title">Email</td>
                     <td class="content">
-                            <input type="text" asp-for="@Model.Email" value="@Model.Email">
-                            <span asp-validation-for="Email" class="text-danger"></span>
+                        <input type="text" asp-for="@Model.Email" value="@Model.Email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </td>
                 </tr>
                 <tr>
                     <td class="title">Số điện thoại</td>
                     <td class="content">
-                     <input type="text" asp-for="@Model.PhoneNumber" value="@Model.PhoneNumber">
-                     <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                     </td>
+                        <input type="text" asp-for="@Model.PhoneNumber" value="@Model.PhoneNumber">
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2" class="text-center">
@@ -114,4 +115,4 @@
         font-size: 16px;
         font-family: 'Roboto', sans-serif;
     }
-    </style>
+</style>

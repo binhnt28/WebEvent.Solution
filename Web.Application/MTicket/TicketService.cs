@@ -25,7 +25,7 @@ namespace Web.Application.MTicket
                 gia = request.gia,
                 toida = request.toida,
                 giuphan = request.giuphan,
-                chuaxacnhan = request.chuaxacnhan,
+            
                 EventId=request.EventId,
                 Event =request.Event
             };

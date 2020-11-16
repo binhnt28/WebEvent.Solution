@@ -16,7 +16,6 @@
     font-size: 1.4rem;
     font-weight: 700;
 }
-/* .continue{
-    background: blue;
-    color: white;
-} */
+.hid {
+    display: none;
+}

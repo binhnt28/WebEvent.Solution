@@ -25,27 +25,38 @@
         </div>
         <div class="container list_ticket">
 
-            <div class="ticket_list">
-                <span class="ticket_title">Tên vé</span>
-                <span class="ticket_title">Thời hạn bán</span>
-                <span class="ticket_title">Giá</span>
-                <span class="ticket_title">Sự kiện</span>
-                <span class="ticket_title">Action</span>
 
-            </div>
-            @foreach (var ticket in ViewBag.Listticket)
-            {
-                <div class="ticket_content">
-                    <span class="ticket_title-f">@ticket.name</span>
-                    <span class="ticket_title-f">@ticket.hetmoban</span>
-                    <span class="ticket_title-f">@ticket.gia</span>
-                    <span class="ticket_title-f">@Model.sukien</span>
-                    <span class="ticket_title-f">
-                    <a asp-route-ticketId="@ticket.id" asp-action="DatVe" asp-controller="Home" class=" btn btn-outline-danger">Đặt vé</a>
-                    </span>
+            @{
+                if (@Model.ngayketthuc <= DateTime.Now)
+                {
+                    <span>Sự kiện đã kết thúc rồi 3:</span>
+                }
+                else
+                {
+                    <div class="ticket_list">
+                        <span class="ticket_title">Tên vé</span>
+                        <span class="ticket_title">Thời hạn bán</span>
+                        <span class="ticket_title">Giá</span>
+                        <span class="ticket_title">Sự kiện</span>
+                        <span class="ticket_title">Action</span>
 
-                </div>
+                    </div>
+                    @foreach (var ticket in ViewBag.Listticket)
+                    {
+                        <div class="ticket_content">
+                            <span class="ticket_title-f">@ticket.name</span>
+                            <span class="ticket_title-f">@ticket.hetmoban</span>
+                            <span class="ticket_title-f">@ticket.gia</span>
+                            <span class="ticket_title-f">@Model.sukien</span>
+                            <span class="ticket_title-f">
+                                <a asp-route-ticketId="@ticket.id" asp-action="DatVe" asp-controller="Home" class=" btn btn-outline-danger">Đặt vé</a>
+                            </span>
+
+                        </div>
+                    }
+                }
             }
+
 
         </div>
     </div>

@@ -24,7 +24,7 @@ namespace Web.Data.Extensions
                 Id = roleId,
                 Name = "Admin",
                 NormalizedName = "ADMIN",
-                Description = "Administrator role"
+                Description = "Administrator"
             });
           
             var hasher = new PasswordHasher<AppUser>();
@@ -37,7 +37,7 @@ namespace Web.Data.Extensions
                 Email = "binhnt@gmail.com",
                 NormalizedEmail = "BINHNT@GMAIL.COM",
                 EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "abc123"),
+                PasswordHash = hasher.HashPassword(null, "abc"),
                 SecurityStamp = string.Empty,
                 LastName = "Nguyễn Thanh",
                 FirstName = "Bình",

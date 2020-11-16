@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>DetailsUser</title>
+    <title>Thông tin</title>
 </head>
 <body>
     <div class="container details-user">
@@ -61,33 +61,6 @@
             </tr>
         </table>
     </div>
-   
-    <div class="container tickk">
-        <h3>Danh sách vé đã đặt</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Sự kiện</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in ViewBag.ticket)
-                {
-                    <tr>
-                        <td>@item.Name</td>
-                        <td>@item.Email</td>
-                        <td>@item.Phone</td>
-                        <td>@item.TicketName</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-
 </body>
 </html>
 
@@ -130,6 +103,7 @@
         font-size: 16px;
         font-family: 'Roboto', sans-serif;
     }
+
     .tickk table {
         width: 100%;
         margin: 0 auto;

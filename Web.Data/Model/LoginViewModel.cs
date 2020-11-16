@@ -15,10 +15,9 @@ namespace Web.Data.Model
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
+        public bool Lock { get; set; }
         [Display(Name = "Remember me")]
         public bool RememberMe { get; set; }
-
         public string ReturnUrl { get; set; }
         public IList<AuthenticationScheme> ExternalLogins { get; set; } 
     }

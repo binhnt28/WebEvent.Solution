@@ -160,8 +160,8 @@ namespace Web.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "4b76e89b-ca83-4719-b391-ded1b50dbf3b",
-                            Description = "Administrator role",
+                            ConcurrencyStamp = "dc53c939-7ded-4c08-a6d2-1e00d0995039",
+                            Description = "Administrator",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -207,6 +207,9 @@ namespace Web.Data.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<bool>("Lock")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -243,6 +246,9 @@ namespace Web.Data.Migrations
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
+                    b.Property<bool>("lockoutOnFailure")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -260,21 +266,23 @@ namespace Web.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "926c98aa-dd3e-440f-8d19-5fdaefde5f1e",
+                            ConcurrencyStamp = "50291785-25dd-42a8-8ed5-757e826c6b08",
                             Email = "binhnt@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Bình",
                             FullName = "Nguyễn Thanh Bình",
                             LastName = "Nguyễn Thanh",
+                            Lock = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "BINHNT@GMAIL.COM",
                             NormalizedUserName = "ABC@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENS4cg8kRWUGOWFjJXZNSaK2Ty1jC3ytfa+B9w8NJfM8Y5MePAUASoQBiPrNANOH3g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA4oP0i1UAQWO/mr80OOli9tVseuU3fvxYhYdCQE3SP9nh7RoYKgp2Kg+Tel0LBgog==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
                             Url = "client/assets/img/avt1.png",
-                            UserName = "abc@gmail.com"
+                            UserName = "abc@gmail.com",
+                            lockoutOnFailure = false
                         });
                 });
 
@@ -399,6 +407,7 @@ namespace Web.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("toida")

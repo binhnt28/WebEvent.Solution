@@ -54,41 +54,53 @@
     }
 
 .user-extend {
-    width: 180px;
+    width: 220px;
     height: auto;
+    top: 10%;
     position: absolute;
     z-index: 99;
-    visibility: hidden;
+    background: white;
+    border: 1px gray solid;
+    border-radius: 10px;
 }
 
 .user {
-    width: 180px;
+    width: 220px;
     text-align: right;
+    color: gray;
 }
-
+.user .details {
+        text-align: center;
+}
     .user .user-extend {
         text-align: center;
+        padding-top: 0.6rem;
     }
 
-    .user i {
-        margin-left: 5px;
+    .user span {
+        text-align: center;
     }
 
 .user-extend a {
     text-decoration: none;
+    color: black;
 }
-
+.user-extend i {
+    color: rgb(131, 131, 131);
+}
 .user-extend ul {
-    padding-left: 1rem;
+    padding-left: 0;
 }
-
+.user-extend span {
+    margin-left: 0.5rem;
+}
     .user-extend ul li {
         list-style: none;
     }
+        .user-extend ul li:hover {
+            background: rgba(143, 143, 143, 0.205);
+        }
 
-.user:hover .user-extend {
-    visibility: visible;
-}
 /* --css client-- */
 .event {
     width: 100%;
@@ -112,8 +124,11 @@
 
 .event_tab {
     display: flex;
-    width: 240px;
+    width: 240px!important;
     flex-direction: column;
+}
+.event_tab button {
+    width: 240px !important;
 }
 
 .container-fluid {
@@ -208,3 +223,15 @@
         text-align: center;
         display: flex;
     }
+.hid {
+    display: none!important;
+}
+.tieptheo1 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.daqua1 {
+    display: flex;
+    flex-wrap: wrap;
+}
