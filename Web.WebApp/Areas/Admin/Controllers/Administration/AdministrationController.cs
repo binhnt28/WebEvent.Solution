@@ -117,7 +117,7 @@ namespace Web.WebApp.Areas.Admin.Controllers.Administration
 
             if (result.Succeeded)
             {
-                return RedirectToAction("ListRoles");
+                return RedirectToAction("ListRole");
             }
 
             foreach (var error in result.Errors)
