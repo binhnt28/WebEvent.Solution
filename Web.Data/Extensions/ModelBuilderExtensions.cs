@@ -34,16 +34,15 @@ namespace Web.Data.Extensions
                 Id = adminId,
                 UserName = "abc@gmail.com",
                 NormalizedUserName = "ABC@GMAIL.COM",
-                Email = "binhnt@gmail.com",
+                Email = "abc@gmail.com",
                 NormalizedEmail = "BINHNT@GMAIL.COM",
                 EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "abc"),
+                PasswordHash = hasher.HashPassword(null, "admin"),
                 SecurityStamp = string.Empty,
                 Lock=false,
                 LastName = "Nguyễn Thanh",
                 FirstName = "Bình",
                 FullName= "Nguyễn Thanh Bình",
-                Url = "client/assets/img/avt1.png"
             });
 
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>

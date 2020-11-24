@@ -182,6 +182,7 @@ namespace Web.WebApp.Controllers
             {
                 user.FirstName = app.FirstName;
                 user.UserName = app.Email;
+                user.Email = app.Email;
                 user.LastName = app.LastName;
                 user.FullName = app.LastName + " " + app.FirstName;
                 user.DateOfBirth = app.DateOfBirth;
